@@ -12,9 +12,9 @@ struct Element
 
 struct MinHeap
 {
-	int size;   
-	int capacity;  
-	int *position;     
+	int size;
+	int capacity;
+	int *position;
 	struct Element **array;
 };
 

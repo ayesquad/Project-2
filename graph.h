@@ -11,7 +11,7 @@ struct Node
 
 struct List
 {
-	struct Node *head; 
+	struct Node *head;
 	struct Node *tail;
 };
 

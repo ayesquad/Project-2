@@ -1,5 +1,7 @@
 #include<iostream>
 #include<iomanip>
+#include<stdio.h>
+#include<stdlib.h>
 #include"heap.h"
 #include"graph.h"
 
@@ -72,7 +74,7 @@ struct Element* extractMin(struct MinHeap* minHeap) {
 
 	minHeap->position[root->v] = minHeap->size /*- 1*/;
 	minHeap->position[lastNode->v] = 0;
- 
+
 	--minHeap->size;
 	minHeapify(minHeap, 0);
 
@@ -116,7 +118,7 @@ void printArr(int dist[], int n) {
 
 void dijkstra(struct Graph* graph, int src, int dest, int flag) {
 	int V = graph->V;
-	int *dist = new int[V];      
+	int *dist = new int[V];
 	int *path = new int[V];
 	int count = 1;
 	int counted = 0;
@@ -124,7 +126,7 @@ void dijkstra(struct Graph* graph, int src, int dest, int flag) {
 	struct MinHeap* minHeap = createMinHeap(V);
 
 	for (int v = 0; v <= V; v++) {
-		dist[v] = INT_MAX;
+		dist[v] = 99999;
 		minHeap->array[v] = newElement(v, dist[v]);
 		minHeap->position[v] = v;
 	}
@@ -153,7 +155,7 @@ void dijkstra(struct Graph* graph, int src, int dest, int flag) {
 			int v = iter->dest;
 
 
-			if (isInMinHeap(minHeap, v) && dist[u] != INT_MAX && iter->weight + dist[u] <= dist[v]) {
+			if (isInMinHeap(minHeap, v) && dist[u] != 99999 && iter->weight + dist[u] <= dist[v]) {
 				dist[v] = dist[u] + iter->weight;
 
 				decreaseKey(minHeap, v, dist[v]);
@@ -163,27 +165,27 @@ void dijkstra(struct Graph* graph, int src, int dest, int flag) {
 	}
 
 	printArr(dist, V);
-	if (src > V || src < 0 ) {
+	if (src > V || src < 0) {
 		cout << "Error:  One or more of the nodes is invalid." << endl;
 	}
 	else if (dest > V || dest < 0) {
 		cout << "Error:  One or more of the nodes is invalid.." << endl;
 	}
 
-	if (flag == 0 && dist[dest] != INT_MAX) {
+	if (flag == 0 && dist[dest] != 99999) {
 		cout << "LENGTH: " << dist[dest] << endl;
 	}
-	else if (flag == 1 && dist[dest] != INT_MAX) {
+	else if (flag == 1 && dist[dest] != 99999) {
 		cout << "PATH: ";
 		for (int i = 1; i <= counted; i++) {
 			cout << path[i] << ", ";
 		}
 		cout << endl;
-	} 
+	}
 	else {
 		cout << "Error:  Invalid flag value." << endl;
 	}
-	if (dist[dest] == INT_MAX) {
+	if (dist[dest] == 99999) {
 		printf("Sorry, node %d is not reachable from node %d.", dest, src);
 		cout << endl;
 	}

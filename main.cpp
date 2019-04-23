@@ -28,7 +28,7 @@ int main() {
 		case 'e':
 		case 'E': {
 			printf("The program is going to be terminated.");
-			exit(0);
+			return 0;
 		}
 				  break;
 
@@ -88,7 +88,7 @@ int main() {
 		default: break;
 		}
 	}
-	exit(0);
+	return 0;
 }
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
 // Debug program: F5 or Debug > Start Debugging menu

@@ -16,7 +16,7 @@ struct Node* NewNode(int dest, int weight) {
 
 struct Graph* createGraph(int V) {
 	struct Graph* graph = (struct Graph*) malloc(sizeof(struct Graph));
-	graph->V = V; 
+	graph->V = V;
 	graph->A = (struct List*) malloc(V * sizeof(struct List));
 
 	for (int i = 0; i <= V; ++i) {
