@@ -5,6 +5,7 @@
 #include "util.h"
 #include "heap.h"
 #include "graph.h"
+#include "main.h"
 using namespace std;
 
 int main() {
